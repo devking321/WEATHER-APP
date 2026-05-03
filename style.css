@@ -19,6 +19,7 @@ main::before {
     position: absolute;
     inset: 0;
     background: url('cloud.jpg');
+    background-repeat: no-repeat;
     opacity: 0.8;
     z-index: -1;
 }
@@ -33,7 +34,7 @@ h2 {
     height: 25vh;
     width: 90vw;
     margin: auto;
-    margin-top: 18vh;
+    margin-top: 15vh;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -52,15 +53,15 @@ h2 {
 }
 
 .info #temp {
-    color: #cbf3f0;
+    color: white;
 }
 
 .info #windspeed {
-    color: #cbf3f0;
+    color: white;
 }
 
 .info #msg {
-    color: #cbf3f0;
+    color: white;
 }
 
 .loading-box {
@@ -100,8 +101,8 @@ h2 {
 
 .forecast {
     margin: auto;
-    min-height: 30vw;
-    width: 90vw;
+    height: 30vh;
+    width: 70vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
