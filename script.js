@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
             console.log(latitude, longitude)
             console.log(position.coords.accuracy)
 
-            if (position.coords.accuracy > 4000) {
+            if (position.coords.accuracy > 400000) {
 
 
                 alert("low accuracy try again")
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
                     let district = addr.state_district || addr.state || "";
 
-                    area.innerHTML = `${place} - ${district}`;
+                    area.innerHTML += `${place} - ${district}  <span class="material-symbols-outlined">distance</span> `;
                     // area.innerHTML = data.address.village + " - " + data.address.state_district
                 })
                 .catch((err) => {
@@ -59,42 +59,46 @@ document.addEventListener("DOMContentLoaded", (e) => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-                    time.innerHTML = `${data.current_weather.time.slice(0, 10)}`
-                    temp.innerHTML = ` Temp: ${data.current_weather.temperature} ${data.current_weather_units.temperature}`
-                    wspeed.innerHTML = ` Wind: ${data.current_weather.windspeed} ${data.current_weather_units.windspeed}`
+                    time.innerHTML = ` <span class="material-symbols-outlined">calendar_month</span> ${data.current_weather.time.slice(0, 10)} `
+                    temp.innerHTML = `  Temp<span class="material-symbols-outlined">heat</span> : ${data.current_weather.temperature} ${data.current_weather_units.temperature}`
+                    wspeed.innerHTML = ` Wind<span class="material-symbols-outlined">
+air
+</span> : ${data.current_weather.windspeed} ${data.current_weather_units.windspeed}`
 
                     if (data.current_weather.temperature <= 0) {
-                        msg.innerHTML = "its Freezing today"
+                        msg.innerHTML = `Its Freezing Today <span class="material-symbols-outlined">snowflake</span>  `
                     }
                     else if (data.current_weather.temperature <= 13) {
-                        msg.innerHTML = "its Cold Today"
+                        msg.innerHTML = `Its coldy Today <span class="material-symbols-outlined">mode_heat_off</span>  `
                     }
                     else if (data.current_weather.temperature <= 20) {
-                        msg.innerHTML = "its good Today"
+                        msg.innerHTML = `Its sunny Today <span class="material-symbols-outlined">sunny</span>  `
                     }
 
                     else if (data.current_weather.temperature < 28) {
-                        msg.innerHTML = "Its sunny Today"
+                        msg.innerHTML = `Its Good Today <span class="material-symbols-outlined">clear_day</span>  `
                     }
                     else {
-                        msg.innerHTML = "Its Hot Today"
+                        msg.innerHTML = `Its Hot Today <span class="material-symbols-outlined">mode_heat</span>  `
                     }
 
-                    let daily= data.daily;
-                    let dailyunit= data.daily_units;
-                    let forecasthtml ="";
+                    let daily = data.daily;
+                    let dailyunit = data.daily_units;
+                    let forecasthtml = "";
 
-                    for(let i=1; i < 7; i++){
-                         console.log(i)
-                         forecasthtml += `
+                    for (let i = 1; i < 7; i++) {
+                        //  console.log(i)
+                        forecasthtml += `
+                         <div class="box"> 
                          <p>${daily.time[i]}</p>
                          <p>Min : ${daily.temperature_2m_min[i]} ${dailyunit.temperature_2m_max}</p>
                          <p>Max : ${daily.temperature_2m_max[i]} ${dailyunit.temperature_2m_max}</p>
-                         <p>Wind: ${daily.windspeed_10m_max[i]}</p>
+                         <p>Wind: ${daily.windspeed_10m_max[i]} ${dailyunit.windspeed_10m_max}</p>
+                         </div>
                          `
                     }
                     forecast.innerHTML = forecasthtml;
-                    
+
 
                 })
                 .catch(error => {
