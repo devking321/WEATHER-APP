@@ -12,12 +12,15 @@
 
     .info #msg {
         color: white;
-        background-color: rgba(173, 216, 230, 0.521);
+        background-color: rgba(173, 216, 230, 0.336);
     }
 
     .forecast {
         margin-top: 7vh;
         height: 25vh;
+    }
+    .forecast .box{
+        border: 1px solid lightblue;
     }
 
 }
