@@ -1,0 +1,23 @@
+@media (max-width:480px) {
+
+    .info {}
+
+    .info #temp {
+        color: white;
+    }
+
+    .info #windspeed {
+        color: white;
+    }
+
+    .info #msg {
+        color: white;
+        background-color: rgba(173, 216, 230, 0.521);
+    }
+
+    .forecast {
+        margin-top: 7vh;
+        height: 25vh;
+    }
+
+}
